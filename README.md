@@ -36,4 +36,4 @@ Q4b: Will the buffer be thread safe if there are multiple writer threads? Why?
 
 Q5: if the index increments are not atomic, can the ring buffer still be thread safe?
 
-**By default, no, you will need so mechanism to assure thread safeness**
+**By default, no, you will need so mechanism to assure thread safety**
