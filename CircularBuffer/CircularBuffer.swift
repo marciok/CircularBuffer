@@ -10,37 +10,29 @@ import Foundation
 
 public struct CircularBuffer<T> {
     private var array: [T?]
-    private var readIndex = 0
-    private var writeIndex = 0
-    
-    // Warning: do not call `readAndWriteQueue` inside another `readAndWriteQueue` it will create a deadlock.
-    private let readAndWriteQueue = DispatchQueue(label: "com.marcioklepacz.CircularBuffer.readWriteQueue")
+    private var readIndex: Int32 = 0
+    private var writeIndex: Int32 = 0
     
     public init(size: Int) {
         self.array = Array<T?>(repeatElement(nil, count: size))
     }
     
     public mutating func write(_ element: T) -> Bool {
-        var wrote = false
+        guard !isFull else { return false }
         
-        readAndWriteQueue.sync {
-            guard !isFull else { return }
-            array[writeIndex % array.count] = element
-            writeIndex += 1
-            wrote = true
-        }
+        let index = Int(writeIndex) % array.count
+        array[index] = element
+        atomic_increase(&writeIndex)
         
-        return wrote
+        return true
     }
     
     public mutating func read() -> T? {
-        var element: T? = nil
+        guard !array.isEmpty else { return nil }
         
-        readAndWriteQueue.sync {
-            guard !array.isEmpty else { return }
-            element = array[readIndex % array.count]
-            readIndex += 1
-        }
+        let index = Int(readIndex) % array.count
+        let element = array[index]
+        atomic_increase(&readIndex)
         
         return element
     }

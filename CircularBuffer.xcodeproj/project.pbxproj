@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		578B18171E01AB9B0070E19C /* atomic_operations.c in Sources */ = {isa = PBXBuildFile; fileRef = 578B18151E01AB9B0070E19C /* atomic_operations.c */; };
 		57DFC92D1DFF30A0004D47BB /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DFC92C1DFF30A0004D47BB /* main.swift */; };
 		57DFC9341DFF5050004D47BB /* CircularBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DFC9331DFF5050004D47BB /* CircularBuffer.swift */; };
 		57DFC94A1DFF5185004D47BB /* CircularBufferTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DFC9491DFF5185004D47BB /* CircularBufferTests.swift */; };
-		57DFC94F1DFF534D004D47BB /* CircularBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DFC9331DFF5050004D47BB /* CircularBuffer.swift */; };
+		57E60E9A1E09628500BA0207 /* CircularBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DFC9331DFF5050004D47BB /* CircularBuffer.swift */; };
+		57E60E9B1E09640A00BA0207 /* atomic_operations.c in Sources */ = {isa = PBXBuildFile; fileRef = 578B18151E01AB9B0070E19C /* atomic_operations.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +28,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		578B18141E01AB9B0070E19C /* CircularBuffer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CircularBuffer-Bridging-Header.h"; sourceTree = "<group>"; };
+		578B18151E01AB9B0070E19C /* atomic_operations.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = atomic_operations.c; sourceTree = "<group>"; };
+		578B18161E01AB9B0070E19C /* atomic_operations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atomic_operations.h; sourceTree = "<group>"; };
 		57DFC9291DFF30A0004D47BB /* CircularBuffer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CircularBuffer; sourceTree = BUILT_PRODUCTS_DIR; };
 		57DFC92C1DFF30A0004D47BB /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		57DFC9331DFF5050004D47BB /* CircularBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularBuffer.swift; sourceTree = "<group>"; };
@@ -75,6 +80,9 @@
 			children = (
 				57DFC92C1DFF30A0004D47BB /* main.swift */,
 				57DFC9331DFF5050004D47BB /* CircularBuffer.swift */,
+				578B18151E01AB9B0070E19C /* atomic_operations.c */,
+				578B18161E01AB9B0070E19C /* atomic_operations.h */,
+				578B18141E01AB9B0070E19C /* CircularBuffer-Bridging-Header.h */,
 			);
 			path = CircularBuffer;
 			sourceTree = "<group>";
@@ -132,11 +140,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Marcio Klepacz";
 				TargetAttributes = {
 					57DFC9281DFF30A0004D47BB = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 					57DFC9461DFF5185004D47BB = {
@@ -178,6 +187,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				578B18171E01AB9B0070E19C /* atomic_operations.c in Sources */,
 				57DFC9341DFF5050004D47BB /* CircularBuffer.swift in Sources */,
 				57DFC92D1DFF30A0004D47BB /* main.swift in Sources */,
 			);
@@ -187,7 +197,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57DFC94F1DFF534D004D47BB /* CircularBuffer.swift in Sources */,
+				57E60E9B1E09640A00BA0207 /* atomic_operations.c in Sources */,
+				57E60E9A1E09628500BA0207 /* CircularBuffer.swift in Sources */,
 				57DFC94A1DFF5185004D47BB /* CircularBufferTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,6 +224,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -261,6 +273,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -280,13 +293,18 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
 		57DFC9311DFF30A0004D47BB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CircularBuffer/CircularBuffer-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -294,7 +312,10 @@
 		57DFC9321DFF30A0004D47BB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CircularBuffer/CircularBuffer-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -308,6 +329,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Marciok.CircularBufferTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "CircularBuffer/CircularBuffer-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -320,6 +342,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Marciok.CircularBufferTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CircularBuffer/CircularBuffer-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};
@@ -344,6 +367,7 @@
 				57DFC9321DFF30A0004D47BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		57DFC94C1DFF5185004D47BB /* Build configuration list for PBXNativeTarget "CircularBufferTests" */ = {
 			isa = XCConfigurationList;
@@ -352,6 +376,7 @@
 				57DFC94E1DFF5185004D47BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

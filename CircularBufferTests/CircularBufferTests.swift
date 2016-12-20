@@ -65,7 +65,10 @@ class CircularBufferTests: XCTestCase {
         DispatchQueue.main.asyncAfter(deadline: assertTime) {
             let first = self.buffer!.read()
             let second = self.buffer!.read()
-            sleep(1) //
+            
+            // The `sleep()` is needed in order to avoid false positives.
+            // `sleep()` will make sure all operations are finished, before asserting.
+            sleep(2)   
             
             XCTAssertNotNil(first)
             XCTAssert(first! == 2)
