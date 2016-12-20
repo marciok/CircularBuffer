@@ -20,11 +20,11 @@ Using atomic increament should be faster than having my own queue, because the c
 
 Q2b: If you cannot, explain why the implementation would not be thread safe.
 
-**Because, I'm writing a value on a mutable array from different threads, where each thread is trying to assign a different value to the same index**
+**Because, I'm writing on a mutable array from different threads, where each thread is trying to assign a different value at the same index**
 
 Q3: If the answer to Q1 is yes, can you write a test that will fail if the implementation is not thread-safe?
 
-**I was not able to write a test that guarantes the implepentation was thread-safe, what I did was create a test that checks the buffer consistency when you try to write two elements at the same time from different threads**
+**I was not able to write a test that guarantes the implepentation was thread-safe, what I did was create [a test that checks the buffer consistency when you try to write two elements at the same time from different threads](https://github.com/marciok/CircularBuffer/blob/atomic-increment/CircularBufferTests/CircularBufferTests.swift#L53)**
 
 Q4a: Will the buffer be thread safe if there are multiple reader threads? Why?
 
