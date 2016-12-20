@@ -1,6 +1,12 @@
 # CircularBuffer
 ## Thread-Safe Circular Buffer Implementation
 
+## Requirements
+- Xcode 8.2
+- Swift 3.0
+
+
+
 ### Q&A
 
 *Q1: Can you remove semaphores (or whatever thread-safe technique you employed) from the implementation, but guarantee that the implementation remains thread safe?*
