@@ -14,7 +14,7 @@ Q2a: If you can remove semaphores,
                 Lets say you put 5 elements in; get one element; put another; get 1;
                 put another, etc. for a sufficiently large number of iterations. Assume the array size is 10.
                 
-**I removed the queue used to make it thread-safe, you can check the code here (It's in a different branch).
+**I removed the queue used to make it thread-safe, you can check the code [here (It's in a different branch)](https://github.com/marciok/CircularBuffer/blob/atomic-increment/CircularBuffer/CircularBuffer.swift).
 At first, it looked like it was working correctly, using just 2 threads. However, after increasing the number of threads the application started to fail randomly.
 Using atomic increament should be faster than having my own queue, because the command it's mapped to a CPU atomic instructions**                
 
